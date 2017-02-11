@@ -39,7 +39,7 @@ repository:
   nodes:
     patterns: [
       {
-        match: '([[:alpha:][:digit:]_-]+@[0-9a-fA-F]+|[[:alpha:][:digit:]_-]+)([[:space:]]*{)'
+        match: '([[:alpha:][:digit:]_-]+@[0-9a-fA-F]+|[[:alpha:][:digit:]_-]+)[[:space:]]*(\\n|{)'
         'captures':
           '1':
             'name': 'entity.name.section.dts'
