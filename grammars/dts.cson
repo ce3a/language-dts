@@ -1,0 +1,135 @@
+'scopeName': 'source.dts'
+'name': 'Device Tree Source'
+'fileTypes': ['dts', 'dtsi']
+
+patterns: [
+  {
+    include: '#comments'
+  }
+  {
+    include: '#strings'
+  }
+  {
+    include: '#references'
+  }
+  {
+    include: '#binaries'
+  }
+  {
+    include: '#cells'
+  }
+  {
+    include: '#keywords'
+  }
+  {
+    include: '#labels'
+  }
+  {
+    include: '#nodes'
+  }
+]
+
+repository:
+  comments:
+    patterns: [
+      {
+        begin: '//'
+        end: '\\n'
+        name: 'comment.line.double-slash.dts'
+      }
+      {
+        begin: '/\\*'
+        beginCaptures:
+          '0':
+            name: 'punctuation.definition.comment.begin.dts'
+        end: '\\*/'
+        endCaptures:
+          '0':
+            name: 'punctuation.definition.comment.end.dts'
+        name: 'comment.block.scilab'
+      }
+    ]
+  strings:
+    patterns: [
+      {
+        begin: '(?<![\\w\\]\)])\''
+        beginCaptures:
+          '0':
+            name: 'punctuation.definition.string.begin.dts'
+        end: '\'(?!\')'
+        endCaptures:
+          '0':
+            name: 'punctuation.definition.string.end.dts'
+        name: 'string.quoted.single.dts'
+        patterns: [
+          {
+            match: '\'\'|""'
+            name: 'constant.character.escape.dts'
+          }
+        ]
+      }
+      {
+        begin: '"'
+        beginCaptures:
+          '0':
+            name: 'punctuation.definition.string.begin.dts'
+        end: '"(?!")'
+        endCaptures:
+          '0':
+            name: 'punctuation.definition.string.end.dts'
+        name: 'string.quoted.double.dts'
+        patterns: [
+          {
+            match: '\'\'|""'
+            name: 'constant.character.escape.dts'
+          }
+        ]
+      }
+    ]
+  references:
+    patterns: [
+      {
+        match: '&[[:alpha:][:digit:]_]+'
+        name: 'constant.language.dts'
+      }
+    ]
+  binaries:
+    patterns: [
+      {
+        begin: '\\['
+        end: '\\]'
+        name: 'constant.numeric.dts'
+      }
+    ]
+  keywords:
+    patterns: [
+      {
+        match: '/.*/'
+        name: 'keyword.other.dts'
+      }
+    ]
+  labels:
+    patterns: [
+      {
+        match: '^[[:space:]]*[[:alpha:][:digit:]_]+:'
+        name: 'entity.name.tag.dts'
+      }
+    ]
+  cells:
+    patterns: [
+      {
+        begin: '<'
+        end: '>'
+        name: 'constant.numeric.dts'
+      }
+    ]
+  nodes:
+    patterns: [
+      {
+        match: '([[:alpha:][:digit:]]+@[0-9a-fA-F]+|[[:alpha:][:digit:]_]+)([[:space:]]*{)'
+        'captures':
+          '1':
+            'name': 'entity.name.section.dts'
+        name: ''
+      }
+    ]

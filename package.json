@@ -1,0 +1,17 @@
+{
+  "name": "language-dts",
+  "version": "0.0.0",
+  "description": "Device Tree Source (dts/dtsi) language support in Atom",
+  "engines": {
+    "atom": "*"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ce3a/language-dts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ce3a/language-dts/issues"
+  },
+  "license": "MIT"
+}
