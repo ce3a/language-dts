@@ -52,38 +52,15 @@ repository:
   strings:
     patterns: [
       {
-        begin: '(?<![\\w\\]\)])\''
-        beginCaptures:
-          '0':
-            name: 'punctuation.definition.string.begin.dts'
-        end: '\'(?!\')'
-        endCaptures:
-          '0':
-            name: 'punctuation.definition.string.end.dts'
-        name: 'string.quoted.single.dts'
-        patterns: [
-          {
-            match: '\'\'|""'
-            name: 'constant.character.escape.dts'
-          }
-        ]
-      }
-      {
         begin: '"'
         beginCaptures:
           '0':
             name: 'punctuation.definition.string.begin.dts'
-        end: '"(?!")'
+        end: '"'
         endCaptures:
           '0':
             name: 'punctuation.definition.string.end.dts'
         name: 'string.quoted.double.dts'
-        patterns: [
-          {
-            match: '\'\'|""'
-            name: 'constant.character.escape.dts'
-          }
-        ]
       }
     ]
   references:
