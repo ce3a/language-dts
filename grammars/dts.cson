@@ -56,7 +56,7 @@ repository:
   decnumbers:
     patterns: [
       {
-        match: '\\b[[:digit:]]+\\b'
+        match: '(?<![[:alpha:]]-)\\b[[:digit:]]+\\b'
         name: 'constant.numeric.integer.decimal.dts'
       }
     ]
