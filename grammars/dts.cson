@@ -106,7 +106,7 @@ repository:
   keywords:
     patterns: [
       {
-        match: '/.*/'
+        match: '/[[:alpha:][:digit:]_-]+/'
         name: 'keyword.other.dts'
       }
     ]
