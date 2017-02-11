@@ -99,7 +99,7 @@ repository:
   references:
     patterns: [
       {
-        match: '&[[:alpha:][:digit:]_-]+'
+        match: '(&[[:alpha:][:digit:]_-]+)|(&{.*})'
         name: 'constant.language.dts'
       }
     ]
