@@ -135,7 +135,19 @@ repository:
   directives:
     patterns: [
       {
-        match: '#(include|define)\\b'
+        begin: '#(include)\\b'
+        end: '\\n'
+        name: 'keyword.other.dts'
+        patterns: [
+          {
+            begin: '(<|")'
+            end: '(>|")'
+            name: 'string.quoted.double.dts'
+          }
+        ]
+      }
+      {
+        match: '#(define)\\b'
         name: 'keyword.other.dts'
       }
     ]
