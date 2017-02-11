@@ -4,13 +4,10 @@
 
 patterns: [
   {
-    include: '#comments'
+    include: '#nodes'
   }
   {
-    include: '#strings'
-  }
-  {
-    include: '#references'
+    include: '#labels'
   }
   {
     include: '#decnumbers'
@@ -19,34 +16,49 @@ patterns: [
     include: '#hexnumbers'
   }
   {
+    include: '#strings'
+  }
+  {
+    include: '#references'
+  }
+  {
     include: '#keywords'
   }
   {
-    include: '#labels'
-  }
-  {
-    include: '#nodes'
+    include: '#comments'
   }
 ]
 
 repository:
-  comments:
+  nodes:
     patterns: [
       {
-        begin: '//'
-        end: '\\n'
-        name: 'comment.line.double-slash.dts'
+        match: '([[:alpha:][:digit:]]+@[0-9a-fA-F]+|[[:alpha:][:digit:]_]+)([[:space:]]*{)'
+        'captures':
+          '1':
+            'name': 'entity.name.section.dts'
+        name: ''
       }
+    ]
+  labels:
+    patterns: [
       {
-        begin: '/\\*'
-        beginCaptures:
-          '0':
-            name: 'punctuation.definition.comment.begin.dts'
-        end: '\\*/'
-        endCaptures:
-          '0':
-            name: 'punctuation.definition.comment.end.dts'
-        name: 'comment.block.scilab'
+        match: '^[[:space:]]*[[:alpha:][:digit:]_-]+:'
+        name: 'entity.name.tag.dts'
+      }
+    ]
+  decnumbers:
+    patterns: [
+      {
+        match: '\\b[[:digit:]]+\\b'
+        name: 'constant.numeric.integer.decimal.dts'
+      }
+    ]
+  hexnumbers:
+    patterns: [
+      {
+        match: '0x\\h+'
+        name: 'constant.numeric.integer.hexadecimal.dts'
       }
     ]
   strings:
@@ -70,20 +82,6 @@ repository:
         name: 'constant.language.dts'
       }
     ]
-  decnumbers:
-    patterns: [
-      {
-        match: '\\b[[:digit:]]+\\b'
-        name: 'constant.numeric.integer.decimal.dts'
-      }
-    ]
-  hexnumbers:
-    patterns: [
-      {
-        match: '0x\\h+'
-        name: 'constant.numeric.integer.hexadecimal.dts'
-      }
-    ]
   keywords:
     patterns: [
       {
@@ -91,20 +89,22 @@ repository:
         name: 'keyword.other.dts'
       }
     ]
-  labels:
+  comments:
     patterns: [
       {
-        match: '^[[:space:]]*[[:alpha:][:digit:]_-]+:'
-        name: 'entity.name.tag.dts'
+        begin: '//'
+        end: '\\n'
+        name: 'comment.line.double-slash.dts'
       }
-    ]
-  nodes:
-    patterns: [
       {
-        match: '([[:alpha:][:digit:]]+@[0-9a-fA-F]+|[[:alpha:][:digit:]_]+)([[:space:]]*{)'
-        'captures':
-          '1':
-            'name': 'entity.name.section.dts'
-        name: ''
+        begin: '/\\*'
+        beginCaptures:
+          '0':
+            name: 'punctuation.definition.comment.begin.dts'
+        end: '\\*/'
+        endCaptures:
+          '0':
+            name: 'punctuation.definition.comment.end.dts'
+        name: 'comment.block.scilab'
       }
     ]
