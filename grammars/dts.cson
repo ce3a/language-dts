@@ -30,6 +30,9 @@ patterns: [
   {
     include: '#comments'
   }
+  {
+    include: '#directives'
+  }
 ]
 
 repository:
@@ -127,5 +130,12 @@ repository:
           '0':
             name: 'punctuation.definition.comment.end.dts'
         name: 'comment.block.scilab'
+      }
+    ]
+  directives:
+    patterns: [
+      {
+        match: '#(include|define)\\b'
+        name: 'keyword.other.dts'
       }
     ]
