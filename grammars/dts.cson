@@ -43,7 +43,7 @@ repository:
   labels:
     patterns: [
       {
-        match: '^[[:space:]]*[[:alpha:][:digit:]_-]+:'
+        match: '\\w[[:alpha:][:digit:]_-]+:'
         name: 'entity.name.tag.dts'
       }
     ]
