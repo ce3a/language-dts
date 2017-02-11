@@ -1,7 +1,7 @@
 {
   "name": "language-dts",
   "version": "0.0.0",
-  "description": "Device Tree Source (dts/dtsi) language support in Atom",
+  "description": "Devicetree Source (DTS) language support in Atom",
   "engines": {
     "atom": "*"
   },

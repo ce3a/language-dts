@@ -1,5 +1,5 @@
 'scopeName': 'source.dts'
-'name': 'Device Tree Source'
+'name': 'Devicetree Source'
 'fileTypes': ['dts', 'dtsi']
 
 patterns: [
