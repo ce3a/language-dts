@@ -13,10 +13,10 @@ patterns: [
     include: '#references'
   }
   {
-    include: '#binaries'
+    include: '#decnumbers'
   }
   {
-    include: '#cells'
+    include: '#hexnumbers'
   }
   {
     include: '#keywords'
@@ -70,12 +70,18 @@ repository:
         name: 'constant.language.dts'
       }
     ]
-  binaries:
+  decnumbers:
     patterns: [
       {
-        begin: '\\['
-        end: '\\]'
-        name: 'constant.numeric.dts'
+        match: '\\b[[:digit:]]+\\b'
+        name: 'constant.numeric.integer.decimal.dts'
+      }
+    ]
+  hexnumbers:
+    patterns: [
+      {
+        match: '0x\\h+'
+        name: 'constant.numeric.integer.hexadecimal.dts'
       }
     ]
   keywords:
@@ -90,14 +96,6 @@ repository:
       {
         match: '^[[:space:]]*[[:alpha:][:digit:]_-]+:'
         name: 'entity.name.tag.dts'
-      }
-    ]
-  cells:
-    patterns: [
-      {
-        begin: '<'
-        end: '>'
-        name: 'constant.numeric.dts'
       }
     ]
   nodes:
