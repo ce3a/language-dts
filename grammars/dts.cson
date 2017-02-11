@@ -16,6 +16,9 @@ patterns: [
     include: '#hexnumbers'
   }
   {
+    include: '#hexbytes'
+  }
+  {
     include: '#strings'
   }
   {
@@ -59,6 +62,24 @@ repository:
       {
         match: '0x\\h+'
         name: 'constant.numeric.integer.hexadecimal.dts'
+      }
+    ]
+  hexbytes:
+    patterns: [
+      {
+        begin: '\\['
+        end: '\\]'
+        name: ''
+        patterns: [
+          {
+            match: '\\b\\h+\\b'
+            name: 'constant.numeric.integer.hexadecimal.dts'
+          }
+          {
+            match: '\\w[[:alpha:][:digit:]_-]+:'
+            name: 'entity.name.tag.dts'
+          }
+        ]
       }
     ]
   strings:
