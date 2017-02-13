@@ -199,20 +199,20 @@ repository:
   directives:
     patterns: [
       {
-        begin: '#(include)\\b'
-        end: '\\n'
-        name: 'keyword.other.dts'
-        patterns: [
-          {
-            begin: '(<|")'
-            end: '(>|")'
-            name: 'string.quoted.double.dts'
-          }
-        ]
+        match: '(#include)\\s*((["].*["])|([<].*[>])|)'
+        'captures':
+          '1':
+            'name': 'keyword.control.directive.include.dts'
+          '2':
+            'name': 'string.quoted.double.dts'
       }
       {
-        match: '#(define)\\b'
-        name: 'keyword.other.dts'
+        match: '(#define)(.*+)\\n'
+        'captures':
+          '1':
+            'name': 'keyword.control.directive.define.dts'
+      }
+    ]
   defines:
     patterns: [
       {
