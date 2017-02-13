@@ -42,9 +42,9 @@ repository:
         match: '([[:alpha:][:digit:]_-]+)(|@[0-9a-fA-F[:alpha:][:digit:],_-]+)([[:space:]]*{)'
         'captures':
           '1':
-            'name': 'entity.name.section.dts'
+            'name': 'storage.type.dts'
           '2':
-            'name': 'entity.name.section.dts'
+            'name': 'storage.type.dts'
         name: ''
       }
     ]
