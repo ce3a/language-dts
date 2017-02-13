@@ -16,6 +16,9 @@ patterns: [
     include: '#hexnumbers'
   }
   {
+    include: '#arrays'
+  }
+  {
     include: '#hexbytes'
   }
   {
@@ -32,6 +35,9 @@ patterns: [
   }
   {
     include: '#directives'
+  }
+  {
+    include: '#defines'
   }
 ]
 
@@ -69,6 +75,47 @@ repository:
         name: 'constant.numeric.integer.hexadecimal.dts'
       }
     ]
+  arrays:
+    patterns: [
+      {
+        begin: '<'
+        end: '>'
+        name: ''
+        patterns: [
+          {
+            match: '\\b[[:digit:]]+\\b'
+            name: 'constant.numeric.integer.decimal.dts'
+          }
+          {
+            match: '0x\\h+\\b'
+            name: 'constant.numeric.integer.hexadecimal.dts'
+          }
+          {
+            match: '\\w[[:alpha:][:digit:]_-]+:'
+            name: 'entity.name.tag.dts'
+          }
+          {
+            match: '(&[[:alpha:][:digit:]_-]+)|(&{.*})'
+            name: 'constant.language.dts'
+          }
+          {
+            match: '(?<!&)\\b[[:alpha:]_]+[[:alpha:][:digit:]_]+'
+            name: 'entity.name.function.preprocessor.dts'
+          }
+          {
+            begin: '/\\*'
+            beginCaptures:
+              '0':
+                name: 'punctuation.definition.comment.begin.dts'
+            end: '\\*/'
+            endCaptures:
+              '0':
+                name: 'punctuation.definition.comment.end.dts'
+            name: 'comment.block.scilab'
+          }
+        ]
+      }
+    ]
   hexbytes:
     patterns: [
       {
@@ -83,6 +130,21 @@ repository:
           {
             match: '\\w[[:alpha:][:digit:]_-]+:'
             name: 'entity.name.tag.dts'
+          }
+          {
+            match: '\\b[[:alpha:]_]+[[:alpha:][:digit:]_]+'
+            name: 'entity.name.function.preprocessor.dts'
+          }
+          {
+            begin: '/\\*'
+            beginCaptures:
+              '0':
+                name: 'punctuation.definition.comment.begin.dts'
+            end: '\\*/'
+            endCaptures:
+              '0':
+                name: 'punctuation.definition.comment.end.dts'
+            name: 'comment.block.scilab'
           }
         ]
       }
@@ -151,5 +213,12 @@ repository:
       {
         match: '#(define)\\b'
         name: 'keyword.other.dts'
+  defines:
+    patterns: [
+      {
+        match: '(=[[:space:]]*+)([[:alpha:]_]+[[:alpha:][:digit:]_]+);'
+        'captures':
+          '2':
+            'name': 'entity.name.function.preprocessor.dts'
       }
     ]
