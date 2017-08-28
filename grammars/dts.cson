@@ -103,6 +103,11 @@ repository:
             name: 'entity.name.function.preprocessor.dts'
           }
           {
+            begin: '//'
+            end: '\\n'
+            name: 'comment.line.double-slash.dts'
+          }
+          {
             begin: '/\\*'
             beginCaptures:
               '0':
